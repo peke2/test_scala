@@ -36,3 +36,17 @@ for(k <- Array("a","b","c")){
 }
 
 
+//	リストをリストに追加登録
+println()
+println("--------")
+
+val list_map = Map("abc"->List("aaa", "bbb", "ccc"), "def"->List("ddd", "eee", "fff"))
+var temp_list:List[List[String]] = List()
+for(map <- list_map)
+{
+	val (k, v) = map
+	temp_list = temp_list :+ v
+	println(v)
+}
+
+println(temp_list)
