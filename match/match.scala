@@ -1,6 +1,8 @@
 
 //	マッチング
 
+println("---- 日付文字列のマッチング確認 ----")
+
 val strList = List(
 	"2000年11月～2001年3月",
 	"2013/2/21 ～",
@@ -28,3 +30,29 @@ for(str <- strList)
 		case s => println(s"[$s] is No match")
 	}
 }
+
+println("")
+println("---- どこが取得されるかの確認 ----")
+
+val no_brackets = """\d\d\d\d-\d\d-\d\d""".r
+val with_brackets = """(\d\d\d\d)-(\d\d)-(\d\d)""".r	//「()」で囲まれた範囲を取得
+val date = "1785-02-05"
+
+date match{
+	case no_brackets(y,m,d) => println("No brackets=> "+s"$y/$m/$d")
+	case with_brackets(y,m,d) => println("With brackets=> "+s"$y/$m/$d")
+	case s => println(s"[$s] is No match")
+}
+
+println("")
+println("---- どこが取得されるかの確認(日付じゃないやつ) ----")
+
+val start = "^(http:).*".r
+val target = "http://www.google.com/"
+
+target match{
+	case start(protcol) => println("protcol=> "+s"$protcol")
+	case s => println(s"[$s] is No match")
+}
+
+
